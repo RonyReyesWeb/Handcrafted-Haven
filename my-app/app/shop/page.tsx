@@ -366,11 +366,7 @@ export default function ShopPage() {
                       <span className="text-[#D85A30] font-bold text-lg">
                         ${product.price.toFixed(2)}
                       </span>
-                      <button className="text-xs bg-[#D85A30] text-white px-4 py-1.5 rounded-full hover:bg-[#BA7517] transition-colors" onClick={() => {
-    console.log("CLICK");
-    console.log(product);
-    setSelectedProduct(product);
-  }}>
+                      <button className="text-xs bg-[#D85A30] text-white px-4 py-1.5 rounded-full hover:bg-[#BA7517] transition-colors" onClick={() => { setSelectedProduct(product);}}>
                         Details
                       </button>
                       <button className="text-xs bg-[#D85A30] text-white px-4 py-1.5 rounded-full hover:bg-[#BA7517] transition-colors">
@@ -391,11 +387,15 @@ export default function ShopPage() {
             onClick={() => setSelectedProduct(null)}
           >
           <div   
-            className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-xl"
-              onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-xl transform transition-all duration-300 scale-100"
+  onClick={(e) => e.stopPropagation()}
             >
 
             <div className="flex justify-between items-center mb-4">
+              <p className="text-sm uppercase tracking-wider text-[#D85A30] font-semibold">
+                Product Details
+              </p>
+
               <h2 className="text-2xl font-bold text-[#5F5E5A]">
                 {selectedProduct.name}
               </h2>
@@ -408,8 +408,10 @@ export default function ShopPage() {
               </button>
             </div>
 
-            <div className="text-6xl text-center mb-4">
-              {selectedProduct.emoji}
+            <div className="flex justify-center m-10">
+              <div className="text-8xl">
+                {selectedProduct.emoji}
+              </div>
             </div>
 
             <p className="text-gray-600 mb-4">
@@ -417,20 +419,29 @@ export default function ShopPage() {
             </p>
 
             <div className="space-y-3 text-[#5F5E5A]">
-              <p>
-                <strong className="text-[#D85A30]">Materials:</strong>{" "}
-                {selectedProduct.materials}
-              </p>
+              <div className="flex items-center gap-2">
+                <span>🪵</span>
+                <span>
+                  <strong className="text-[#D85A30]">Materials:</strong>{" "}
+                  {selectedProduct.materials}
+                </span>
+              </div>
 
-              <p>
-                <strong className="text-[#D85A30]">Stock:</strong>{" "}
-                {selectedProduct.stock}
-              </p>
+              <div className="flex items-center gap-2">
+                <span>📦</span>
+                <span>
+                  <strong className="text-[#D85A30]">Stock:</strong>{" "}
+                  {selectedProduct.stock}
+                </span>
+              </div>
 
-              <p>
-                <strong className="text-[#D85A30]">Shipping:</strong>{" "}
-                {selectedProduct.shippingTime}
-              </p>
+              <div className="flex items-center gap-2">
+                <span>🚚</span>
+                <span>
+                  <strong className="text-[#D85A30]">Shipping:</strong>{" "}
+                  {selectedProduct.shippingTime}
+                </span>
+              </div>
             </div>
 
             <div className="flex justify-between items-center mt-6">
