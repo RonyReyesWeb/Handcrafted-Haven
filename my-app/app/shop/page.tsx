@@ -15,16 +15,165 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: 1, name: "Handwoven Basket", price: 45, category: "Home Decor", seller: "Maria G.", rating: 4.8, reviews: 12, emoji: "🧺" },
-  { id: 2, name: "Ceramic Mug Set", price: 38, category: "Kitchen", seller: "Javiera L.", rating: 4.5, reviews: 8, emoji: "☕" },
-  { id: 3, name: "Knitted Scarf", price: 52, category: "Apparel", seller: "Rony R.", rating: 5.0, reviews: 20, emoji: "🧣" },
-  { id: 4, name: "Silver Leaf Ring", price: 29, category: "Jewelry", seller: "Ana P.", rating: 4.7, reviews: 15, emoji: "💍" },
-  { id: 5, name: "Watercolor Print", price: 65, category: "Art & Prints", seller: "Carlos M.", rating: 4.9, reviews: 6, emoji: "🎨" },
-  { id: 6, name: "Lavender Soap Bar", price: 18, category: "Bath & Beauty", seller: "Sofia R.", rating: 4.6, reviews: 30, emoji: "🧼" },
-  { id: 7, name: "Wooden Puzzle", price: 34, category: "Toys & Games", seller: "Pedro A.", rating: 4.4, reviews: 9, emoji: "🧩" },
-  { id: 8, name: "Macramé Wall Art", price: 78, category: "Home Decor", seller: "Lucia V.", rating: 4.8, reviews: 17, emoji: "🪢" },
-  { id: 9, name: "Hand-dyed Tote Bag", price: 42, category: "Apparel", seller: "Javiera L.", rating: 4.3, reviews: 11, emoji: "👜" },
+  {
+    id: 1,
+    name: "Handwoven Basket",
+    price: 45,
+    category: "Home Decor",
+    seller: "Maria G.",
+    rating: 4.8,
+    reviews: 12,
+    emoji: "🧺",
+    description:
+      "A beautifully handwoven basket made from sustainable natural fibers. Perfect for organizing blankets, toys, or everyday essentials while adding a warm artisanal touch to any room.",
+    materials: "Natural palm fibers",
+    stock: 15,
+    shippingTime: "3-5 business days",
+  },
+
+  {
+    id: 2,
+    name: "Ceramic Mug Set",
+    price: 38,
+    category: "Kitchen",
+    seller: "Javiera L.",
+    rating: 4.5,
+    reviews: 8,
+    emoji: "☕",
+    description:
+      "A charming set of handmade ceramic mugs crafted with care by local artisans. Each piece features unique glazing patterns, making every cup one of a kind.",
+    materials: "Hand-fired ceramic",
+    stock: 12,
+    shippingTime: "2-4 business days",
+  },
+
+  {
+    id: 3,
+    name: "Knitted Scarf",
+    price: 52,
+    category: "Apparel",
+    seller: "Rony R.",
+    rating: 5.0,
+    reviews: 20,
+    emoji: "🧣",
+    description:
+      "Soft, cozy, and handmade with premium yarn, this knitted scarf provides warmth and comfort during colder seasons while showcasing traditional craftsmanship.",
+    materials: "Premium wool blend",
+    stock: 8,
+    shippingTime: "1-3 business days",
+  },
+
+  {
+    id: 4,
+    name: "Silver Leaf Ring",
+    price: 29,
+    category: "Jewelry",
+    seller: "Ana P.",
+    rating: 4.7,
+    reviews: 15,
+    emoji: "💍",
+    description:
+      "An elegant sterling silver ring inspired by the delicate shapes of nature. Carefully handcrafted and polished to create a timeless accessory for everyday wear.",
+    materials: "925 sterling silver",
+    stock: 20,
+    shippingTime: "3-7 business days",
+  },
+
+  {
+    id: 5,
+    name: "Watercolor Print",
+    price: 65,
+    category: "Art & Prints",
+    seller: "Carlos M.",
+    rating: 4.9,
+    reviews: 6,
+    emoji: "🎨",
+    description:
+      "A vibrant watercolor art print created from an original hand-painted design. Printed on high-quality paper, it brings color and creativity to any living space.",
+    materials: "Archival art paper",
+    stock: 25,
+    shippingTime: "2-5 business days",
+  },
+
+  {
+    id: 6,
+    name: "Lavender Soap Bar",
+    price: 18,
+    category: "Bath & Beauty",
+    seller: "Sofia R.",
+    rating: 4.6,
+    reviews: 30,
+    emoji: "🧼",
+    description:
+      "Handcrafted with natural ingredients and infused with soothing lavender, this soap bar gently cleanses the skin while providing a relaxing aromatherapy experience.",
+    materials: "Natural oils and lavender extract",
+    stock: 40,
+    shippingTime: "1-2 business days",
+  },
+
+  {
+    id: 7,
+    name: "Wooden Puzzle",
+    price: 34,
+    category: "Toys & Games",
+    seller: "Pedro A.",
+    rating: 4.4,
+    reviews: 9,
+    emoji: "🧩",
+    description:
+      "A handcrafted wooden puzzle designed to challenge the mind while providing hours of fun. Made from durable materials and finished with child-safe coatings.",
+    materials: "Sustainably sourced wood",
+    stock: 18,
+    shippingTime: "2-4 business days",
+  },
+
+  {
+    id: 8,
+    name: "Macramé Wall Art",
+    price: 78,
+    category: "Home Decor",
+    seller: "Lucia V.",
+    rating: 4.8,
+    reviews: 17,
+    emoji: "🪢",
+    description:
+      "A decorative macramé wall hanging carefully knotted by hand. Its intricate patterns and natural textures create a cozy bohemian atmosphere in any room.",
+    materials: "Cotton cord",
+    stock: 10,
+    shippingTime: "4-6 business days",
+  },
+
+  {
+    id: 9,
+    name: "Hand-dyed Tote Bag",
+    price: 42,
+    category: "Apparel",
+    seller: "Javiera L.",
+    rating: 4.3,
+    reviews: 11,
+    emoji: "👜",
+    description:
+      "A reusable tote bag featuring hand-dyed fabric and unique color patterns. Lightweight, durable, and perfect for shopping, work, or everyday use.",
+    materials: "Organic cotton",
+    stock: 22,
+    shippingTime: "2-4 business days",
+  },
 ];
+
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  seller: string;
+  rating: number;
+  reviews: number;
+  emoji: string;
+  description: string;
+  materials: string;
+  stock: number;
+  shippingTime: string;
+};
 
 const SORT_OPTIONS = [
   { label: "Newest", value: "newest" },
@@ -45,6 +194,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [sortBy, setSortBy] = useState("newest");
   const [maxPrice, setMaxPrice] = useState(200);
   const [search, setSearch] = useState("");
@@ -185,9 +335,8 @@ export default function ShopPage() {
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((product) => (
-                <a
+                <div
                   key={product.id}
-                  href={`/shop/${product.id}`}
                   className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow group"
                 >
                   {/* Image placeholder */}
@@ -217,17 +366,86 @@ export default function ShopPage() {
                       <span className="text-[#D85A30] font-bold text-lg">
                         ${product.price.toFixed(2)}
                       </span>
+                      <button className="text-xs bg-[#D85A30] text-white px-4 py-1.5 rounded-full hover:bg-[#BA7517] transition-colors" onClick={() => {
+    console.log("CLICK");
+    console.log(product);
+    setSelectedProduct(product);
+  }}>
+                        Details
+                      </button>
                       <button className="text-xs bg-[#D85A30] text-white px-4 py-1.5 rounded-full hover:bg-[#BA7517] transition-colors">
                         Add to Cart
                       </button>
                     </div>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           )}
         </div>
       </div>
+
+      {selectedProduct && (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+            onClick={() => setSelectedProduct(null)}
+          >
+          <div   
+            className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-[#5F5E5A]">
+                {selectedProduct.name}
+              </h2>
+
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="text-xl font-bold text-gray-500 hover:text-black"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="text-6xl text-center mb-4">
+              {selectedProduct.emoji}
+            </div>
+
+            <p className="text-gray-600 mb-4">
+              {selectedProduct.description}
+            </p>
+
+            <div className="space-y-3 text-[#5F5E5A]">
+              <p>
+                <strong className="text-[#D85A30]">Materials:</strong>{" "}
+                {selectedProduct.materials}
+              </p>
+
+              <p>
+                <strong className="text-[#D85A30]">Stock:</strong>{" "}
+                {selectedProduct.stock}
+              </p>
+
+              <p>
+                <strong className="text-[#D85A30]">Shipping:</strong>{" "}
+                {selectedProduct.shippingTime}
+              </p>
+            </div>
+
+            <div className="flex justify-between items-center mt-6">
+              <span className="text-2xl font-bold text-[#D85A30]">
+                ${selectedProduct.price.toFixed(2)}
+              </span>
+
+              <button className="bg-[#D85A30] text-white px-4 py-2 rounded-full hover:bg-[#BA7517]">
+                Add to Cart
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="w-full bg-[#5F5E5A] text-white text-center py-6 text-sm mt-12">

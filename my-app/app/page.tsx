@@ -7,7 +7,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-[#D85A30]">Handcrafted Haven</h1>
         <nav className="flex gap-6 text-[#5F5E5A] font-medium">
           <a href="#" className="hover:text-[#D85A30] transition-colors">Home</a>
-          <a href="#" className="hover:text-[#D85A30] transition-colors">Shop</a>
+          <a href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</a>
           <a href="#" className="hover:text-[#D85A30] transition-colors">Sellers</a>
           <a href="#" className="hover:text-[#D85A30] transition-colors">About</a>
         </nav>
