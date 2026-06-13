@@ -90,7 +90,6 @@ export default function RegisterPage() {
         </nav>
       </header>
 
-      {/* Form */}
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="bg-white rounded-3xl shadow-sm p-8 max-w-md w-full">
 
@@ -123,7 +122,6 @@ export default function RegisterPage() {
               )}
             </div>
 
-            {/* Email */}
             <div className="flex flex-col gap-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 Email <span className="text-[#D85A30]">*</span>
@@ -143,7 +141,6 @@ export default function RegisterPage() {
               )}
             </div>
 
-            {/* Password */}
             <div className="flex flex-col gap-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 Password <span className="text-[#D85A30]">*</span>
@@ -163,7 +160,6 @@ export default function RegisterPage() {
               )}
             </div>
 
-            {/* Confirm Password */}
             <div className="flex flex-col gap-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 Confirm Password <span className="text-[#D85A30]">*</span>
@@ -183,7 +179,6 @@ export default function RegisterPage() {
               )}
             </div>
 
-            {/* Role */}
             <div className="flex flex-col gap-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 I want to join as
@@ -226,7 +221,6 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            {/* Submit */}
             <button
               onClick={handleSubmit}
               className="bg-[#D85A30] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#BA7517] transition-colors mt-2"
@@ -244,7 +238,6 @@ export default function RegisterPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-[#5F5E5A] text-white text-center py-6 text-sm">
         <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
         <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>

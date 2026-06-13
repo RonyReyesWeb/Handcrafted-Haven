@@ -58,7 +58,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-[#F1EFE8] font-sans flex flex-col">
 
-      {/* Header */}
       <header className="w-full bg-white shadow-sm py-4 px-8 flex items-center justify-between">
         <a href="/" className="text-2xl font-bold text-[#D85A30]">
           Handcrafted Haven
@@ -70,7 +69,6 @@ export default function LoginPage() {
         </nav>
       </header>
 
-      {/* Form */}
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="bg-white rounded-3xl shadow-sm p-8 max-w-md w-full">
 
@@ -83,7 +81,6 @@ export default function LoginPage() {
 
           <div className="flex flex-col gap-5">
 
-            {/* Email */}
             <div className="flex flex-col gap-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 Email <span className="text-[#D85A30]">*</span>
@@ -103,7 +100,6 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Password */}
             <div className="flex flex-col gap-1">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-semibold text-[#5F5E5A]">
@@ -146,7 +142,6 @@ export default function LoginPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-[#5F5E5A] text-white text-center py-6 text-sm">
         <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
         <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
