@@ -18,7 +18,7 @@ The application focuses on:
 
 ## 👥 Group Members
 
-- **Javiera Lorca Jimenez**
+- **Javiera Lorca**
 - **Rony Reyes**
 
 ---

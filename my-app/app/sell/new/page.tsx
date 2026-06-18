@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 const CATEGORIES = [
@@ -65,8 +66,8 @@ export default function NewListingPage() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-[#F1EFE8] flex items-center justify-center px-4">
-        <div className="bg-white rounded-3xl shadow-md p-12 max-w-md w-full text-center">
-          <div className="text-6xl mb-4">🎉</div>
+        <div className="w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-md sm:p-10 lg:p-12">
+          <div className="text-6xl mb-4">ðŸŽ‰</div>
           <h2 className="text-2xl font-bold text-[#D85A30] mb-2">
             Listing Created!
           </h2>
@@ -107,22 +108,24 @@ export default function NewListingPage() {
     <div className="min-h-screen bg-[#F1EFE8] font-sans">
 
       {/* Header */}
-      <header className="w-full bg-white shadow-sm py-4 px-8 flex items-center justify-between">
-        <a href="/" className="text-2xl font-bold text-[#D85A30]">
-          Handcrafted Haven
-        </a>
-        <nav className="flex gap-6 text-[#5F5E5A] font-medium text-sm">
-          <a href="/" className="hover:text-[#D85A30] transition-colors">Home</a>
-          <a href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</a>
-          <a href="/sellers" className="hover:text-[#D85A30] transition-colors">Sellers</a>
-          <a href="/dashboard/listings" className="hover:text-[#D85A30] transition-colors font-semibold text-[#D85A30]">
-            My Listings
-          </a>
-        </nav>
+      <header className="w-full bg-white px-4 py-4 shadow-sm sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <Link href="/" className="text-2xl font-bold text-[#D85A30]">
+            Handcrafted Haven
+          </Link>
+          <nav className="flex flex-wrap gap-4 text-sm font-medium text-[#5F5E5A] sm:gap-6">
+            <Link href="/" className="hover:text-[#D85A30] transition-colors">Home</Link>
+            <Link href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</Link>
+            <Link href="/sellers" className="hover:text-[#D85A30] transition-colors">Sellers</Link>
+            <Link href="/dashboard/listings" className="hover:text-[#D85A30] transition-colors font-semibold text-[#D85A30]">
+              My Listings
+            </Link>
+          </nav>
+        </div>
       </header>
 
       {/* Page Content */}
-      <main className="max-w-2xl mx-auto px-6 py-12">
+      <main className="mx-auto w-full max-w-2xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
 
         {/* Breadcrumb */}
         <p className="text-sm text-[#5F5E5A] mb-2">
@@ -139,7 +142,7 @@ export default function NewListingPage() {
           Fill in the details below to add a product to your shop.
         </p>
 
-        <div className="bg-white rounded-3xl shadow-sm p-8 flex flex-col gap-6">
+        <div className="flex flex-col gap-6 rounded-3xl bg-white p-5 shadow-sm sm:p-8">
 
           {/* Product Name */}
           <div className="flex flex-col gap-1">
@@ -207,7 +210,7 @@ export default function NewListingPage() {
           </div>
 
           {/* Price & Stock */}
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex flex-col gap-1 flex-1">
               <label className="text-sm font-semibold text-[#5F5E5A]">
                 Price (USD) <span className="text-[#D85A30]">*</span>
@@ -261,7 +264,7 @@ export default function NewListingPage() {
               Product Image
             </label>
             <label className="border-2 border-dashed border-[#E0DDD6] rounded-xl px-4 py-8 flex flex-col items-center justify-center cursor-pointer hover:border-[#D85A30] transition-colors group">
-              <span className="text-3xl mb-2">📷</span>
+              <span className="text-3xl mb-2">ðŸ“·</span>
               <span className="text-sm text-[#5F5E5A] group-hover:text-[#D85A30] transition-colors">
                 {imageName ? imageName : "Click to upload an image"}
               </span>
@@ -281,16 +284,16 @@ export default function NewListingPage() {
           <hr className="border-[#E0DDD6]" />
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
             <a
               href="/dashboard/listings"
-              className="px-6 py-3 rounded-full border border-[#E0DDD6] text-sm font-medium text-[#5F5E5A] hover:border-[#D85A30] hover:text-[#D85A30] transition-colors"
+              className="rounded-full border border-[#E0DDD6] px-6 py-3 text-center text-sm font-medium text-[#5F5E5A] transition-colors hover:border-[#D85A30] hover:text-[#D85A30]"
             >
               Cancel
             </a>
             <button
               onClick={handleSubmit}
-              className="px-6 py-3 rounded-full bg-[#D85A30] text-white text-sm font-semibold hover:bg-[#BA7517] transition-colors"
+              className="rounded-full bg-[#D85A30] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#BA7517]"
             >
               Publish Listing
             </button>
@@ -300,9 +303,9 @@ export default function NewListingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-[#5F5E5A] text-white text-center py-6 text-sm mt-12">
-        <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
-        <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
+      <footer className="mt-12 w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
+        <p>Â© 2025 Handcrafted Haven Â· WDD 430 Web Full-Stack Development Â· BYU-Idaho</p>
+        <p className="mt-1 text-white/60">Javiera Lorca Jimenez Â· Rony Reyes</p>
       </footer>
 
     </div>
