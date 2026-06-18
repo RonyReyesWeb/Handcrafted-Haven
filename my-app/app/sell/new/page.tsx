@@ -264,7 +264,7 @@ export default function NewListingPage() {
               Product Image
             </label>
             <label className="border-2 border-dashed border-[#E0DDD6] rounded-xl px-4 py-8 flex flex-col items-center justify-center cursor-pointer hover:border-[#D85A30] transition-colors group">
-              <span className="text-3xl mb-2">ðŸ“·</span>
+              <span className="text-3xl mb-2">📷</span>
               <span className="text-sm text-[#5F5E5A] group-hover:text-[#D85A30] transition-colors">
                 {imageName ? imageName : "Click to upload an image"}
               </span>
@@ -304,8 +304,8 @@ export default function NewListingPage() {
 
       {/* Footer */}
       <footer className="mt-12 w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
-        <p>Â© 2025 Handcrafted Haven Â· WDD 430 Web Full-Stack Development Â· BYU-Idaho</p>
-        <p className="mt-1 text-white/60">Javiera Lorca Jimenez Â· Rony Reyes</p>
+        <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
+        <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
       </footer>
 
     </div>
