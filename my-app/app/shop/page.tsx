@@ -138,7 +138,7 @@ export default function ShopPage() {
       (search === "" ||
         p.name.toLowerCase().includes(search.toLowerCase()) ||
         p.category.toLowerCase().includes(search.toLowerCase()) ||
-        p.seller.toLowerCase().includes(search.toLowerCase()))
+        p.seller.name.toLowerCase().includes(search.toLowerCase()))
     )
     .sort((a, b) => {
       if (sortBy === "price_asc") return a.price - b.price;
