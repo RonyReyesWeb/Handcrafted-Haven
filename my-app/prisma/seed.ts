@@ -8,63 +8,79 @@ async function main() {
   await prisma.product.deleteMany();
   await prisma.seller.deleteMany();
 
-  const sellers = {
-    maria: await prisma.seller.create({
-      data: {
-        name: "Maria G.",
-        bio: "Basket artisan"
-      }
-    }),
+const sellers = {
+  maria: await prisma.seller.create({
+    data: {
+      name: "Maria G.",
+      bio: "I create handcrafted baskets using sustainable natural fibers.",
+      specialty: "Basket Weaving",
+      emoji: "🧺",
+    },
+  }),
 
-    javiera: await prisma.seller.create({
-      data: {
-        name: "Javiera L.",
-        bio: "Ceramic and textile artisan"
-      }
-    }),
+  javiera: await prisma.seller.create({
+    data: {
+      name: "Javiera L.",
+      bio: "I enjoy designing unique handmade products inspired by everyday life.",
+      specialty: "Home Decor",
+      emoji: "🏡",
+    },
+  }),
 
-    rony: await prisma.seller.create({
-      data: {
-        name: "Rony R.",
-        bio: "Knitted apparel artisan"
-      }
-    }),
+  rony: await prisma.seller.create({
+    data: {
+      name: "Rony R.",
+      bio: "I specialize in knitted apparel and traditional artisan techniques.",
+      specialty: "Knitting",
+      emoji: "🧶",
+    },
+  }),
 
-    ana: await prisma.seller.create({
-      data: {
-        name: "Ana P.",
-        bio: "Jewelry artisan"
-      }
-    }),
+  ana: await prisma.seller.create({
+    data: {
+      name: "Ana P.",
+      bio: "I create nature-inspired jewelry using handcrafted methods.",
+      specialty: "Jewelry",
+      emoji: "💍",
+    },
+  }),
 
-    carlos: await prisma.seller.create({
-      data: {
-        name: "Carlos M.",
-        bio: "Artist and illustrator"
-      }
-    }),
+  carlos: await prisma.seller.create({
+    data: {
+      name: "Carlos M.",
+      bio: "I create original watercolor artwork and handcrafted illustrations.",
+      specialty: "Art & Prints",
+      emoji: "🎨",
+    },
+  }),
 
-    sofia: await prisma.seller.create({
-      data: {
-        name: "Sofia R.",
-        bio: "Natural beauty artisan"
-      }
-    }),
+  sofia: await prisma.seller.create({
+    data: {
+      name: "Sofia R.",
+      bio: "I craft natural beauty products using eco-friendly ingredients.",
+      specialty: "Bath & Beauty",
+      emoji: "🧼",
+    },
+  }),
 
-    pedro: await prisma.seller.create({
-      data: {
-        name: "Pedro A.",
-        bio: "Wood crafts artisan"
-      }
-    }),
+  pedro: await prisma.seller.create({
+    data: {
+      name: "Pedro A.",
+      bio: "I handcraft wooden toys and decorative pieces from sustainable wood.",
+      specialty: "Wood Crafts",
+      emoji: "🪵",
+    },
+  }),
 
-    lucia: await prisma.seller.create({
-      data: {
-        name: "Lucia V.",
-        bio: "Macrame artisan"
-      }
-    }),
-  };
+  lucia: await prisma.seller.create({
+    data: {
+      name: "Lucia V.",
+      bio: "I create modern macramé decorations inspired by minimalist design.",
+      specialty: "Macramé",
+      emoji: "🪢",
+    },
+  }),
+};
 
   await prisma.product.createMany({
     data: [
@@ -78,6 +94,7 @@ async function main() {
         stock: 15,
         shippingTime: "3-5 business days",
         rating: 4.8,
+        reviewCount: 12,
         sellerId: sellers.maria.id,
       },
 
@@ -91,6 +108,7 @@ async function main() {
         stock: 12,
         shippingTime: "2-4 business days",
         rating: 4.5,
+        reviewCount: 8,
         sellerId: sellers.javiera.id,
       },
 
@@ -104,6 +122,7 @@ async function main() {
         stock: 8,
         shippingTime: "1-3 business days",
         rating: 5,
+        reviewCount: 20,
         sellerId: sellers.rony.id,
       },
 
@@ -117,6 +136,7 @@ async function main() {
         stock: 20,
         shippingTime: "3-7 business days",
         rating: 4.7,
+        reviewCount: 15,
         sellerId: sellers.ana.id,
       },
 
@@ -130,6 +150,7 @@ async function main() {
         stock: 25,
         shippingTime: "2-5 business days",
         rating: 4.9,
+        reviewCount: 6,
         sellerId: sellers.carlos.id,
       },
 
@@ -143,6 +164,7 @@ async function main() {
         stock: 40,
         shippingTime: "1-2 business days",
         rating: 4.6,
+        reviewCount: 30,
         sellerId: sellers.sofia.id,
       },
 
@@ -156,6 +178,7 @@ async function main() {
         stock: 18,
         shippingTime: "2-4 business days",
         rating: 4.4,
+        reviewCount: 9,
         sellerId: sellers.pedro.id,
       },
 
@@ -169,6 +192,7 @@ async function main() {
         stock: 10,
         shippingTime: "4-6 business days",
         rating: 4.8,
+        reviewCount: 17,
         sellerId: sellers.lucia.id,
       },
 
@@ -182,6 +206,7 @@ async function main() {
         stock: 22,
         shippingTime: "2-4 business days",
         rating: 4.3,
+        reviewCount: 11,
         sellerId: sellers.javiera.id,
       },
     ],

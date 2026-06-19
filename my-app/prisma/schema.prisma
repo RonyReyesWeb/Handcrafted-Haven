@@ -14,11 +14,13 @@ datasource db {
 }
 
 model Seller {
-  id       Int       @id @default(autoincrement())
-  name     String
-  bio      String
+  id         Int      @id @default(autoincrement())
+  name       String
+  bio        String
+  specialty  String?
+  emoji      String?
 
-  products Product[]
+  products   Product[]
 }
 
 model Product {
@@ -32,7 +34,8 @@ model Product {
   stock        Int
   shippingTime String
 
-  rating Float @default(0)
+  rating       Float @default(0)
+  reviewCount  Int   @default(0)
 
   sellerId Int
   seller   Seller @relation(fields: [sellerId], references: [id])

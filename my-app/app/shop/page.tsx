@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore, useState } from "react";
+import { useSyncExternalStore, useState, useEffect } from "react";
 
 const CATEGORIES = [
   "All",
@@ -15,160 +15,22 @@ const CATEGORIES = [
   "Other",
 ];
 
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "Handwoven Basket",
-    price: 45,
-    category: "Home Decor",
-    seller: "Maria G.",
-    rating: 4.8,
-    reviews: 12,
-    emoji: "🧺",
-    description:
-      "A beautifully handwoven basket made from sustainable natural fibers. Perfect for organizing blankets, toys, or everyday essentials while adding a warm artisanal touch to any room.",
-    materials: "Natural palm fibers",
-    stock: 15,
-    shippingTime: "3-5 business days",
-  },
-
-  {
-    id: 2,
-    name: "Ceramic Mug Set",
-    price: 38,
-    category: "Kitchen",
-    seller: "Javiera L.",
-    rating: 4.5,
-    reviews: 8,
-    emoji: "☕",
-    description:
-      "A charming set of handmade ceramic mugs crafted with care by local artisans. Each piece features unique glazing patterns, making every cup one of a kind.",
-    materials: "Hand-fired ceramic",
-    stock: 12,
-    shippingTime: "2-4 business days",
-  },
-
-  {
-    id: 3,
-    name: "Knitted Scarf",
-    price: 52,
-    category: "Apparel",
-    seller: "Rony R.",
-    rating: 5.0,
-    reviews: 20,
-    emoji: "🧣",
-    description:
-      "Soft, cozy, and handmade with premium yarn, this knitted scarf provides warmth and comfort during colder seasons while showcasing traditional craftsmanship.",
-    materials: "Premium wool blend",
-    stock: 8,
-    shippingTime: "1-3 business days",
-  },
-
-  {
-    id: 4,
-    name: "Silver Leaf Ring",
-    price: 29,
-    category: "Jewelry",
-    seller: "Ana P.",
-    rating: 4.7,
-    reviews: 15,
-    emoji: "💍",
-    description:
-      "An elegant sterling silver ring inspired by the delicate shapes of nature. Carefully handcrafted and polished to create a timeless accessory for everyday wear.",
-    materials: "925 sterling silver",
-    stock: 20,
-    shippingTime: "3-7 business days",
-  },
-
-  {
-    id: 5,
-    name: "Watercolor Print",
-    price: 65,
-    category: "Art & Prints",
-    seller: "Carlos M.",
-    rating: 4.9,
-    reviews: 6,
-    emoji: "🎨",
-    description:
-      "A vibrant watercolor art print created from an original hand-painted design. Printed on high-quality paper, it brings color and creativity to any living space.",
-    materials: "Archival art paper",
-    stock: 25,
-    shippingTime: "2-5 business days",
-  },
-
-  {
-    id: 6,
-    name: "Lavender Soap Bar",
-    price: 18,
-    category: "Bath & Beauty",
-    seller: "Sofia R.",
-    rating: 4.6,
-    reviews: 30,
-    emoji: "🧼",
-    description:
-      "Handcrafted with natural ingredients and infused with soothing lavender, this soap bar gently cleanses the skin while providing a relaxing aromatherapy experience.",
-    materials: "Natural oils and lavender extract",
-    stock: 40,
-    shippingTime: "1-2 business days",
-  },
-
-  {
-    id: 7,
-    name: "Wooden Puzzle",
-    price: 34,
-    category: "Toys & Games",
-    seller: "Pedro A.",
-    rating: 4.4,
-    reviews: 9,
-    emoji: "🧩",
-    description:
-      "A handcrafted wooden puzzle designed to challenge the mind while providing hours of fun. Made from durable materials and finished with child-safe coatings.",
-    materials: "Sustainably sourced wood",
-    stock: 18,
-    shippingTime: "2-4 business days",
-  },
-
-  {
-    id: 8,
-    name: "Macramé Wall Art",
-    price: 78,
-    category: "Home Decor",
-    seller: "Lucia V.",
-    rating: 4.8,
-    reviews: 17,
-    emoji: "🪢",
-    description:
-      "A decorative macramÃ© wall hanging carefully knotted by hand. Its intricate patterns and natural textures create a cozy bohemian atmosphere in any room.",
-    materials: "Cotton cord",
-    stock: 10,
-    shippingTime: "4-6 business days",
-  },
-
-  {
-    id: 9,
-    name: "Hand-dyed Tote Bag",
-    price: 42,
-    category: "Apparel",
-    seller: "Javiera L.",
-    rating: 4.3,
-    reviews: 11,
-    emoji: "👜",
-    description:
-      "A reusable tote bag featuring hand-dyed fabric and unique color patterns. Lightweight, durable, and perfect for shopping, work, or everyday use.",
-    materials: "Organic cotton",
-    stock: 22,
-    shippingTime: "2-4 business days",
-  },
-];
+type Seller = {
+  id: number;
+  name: string;
+  bio: string;
+  specialty: string;
+  emoji: string;
+};
 
 type Product = {
   id: number;
   name: string;
   price: number;
   category: string;
-  seller: string;
+  seller: Seller; 
   rating: number;
-  reviews: number;
+  reviewCount: number;
   emoji: string;
   description: string;
   materials: string;
@@ -226,14 +88,26 @@ function subscribeToCart(callback: () => void) {
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewComment, setReviewComment] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [maxPrice, setMaxPrice] = useState(200);
   const [search, setSearch] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
   const cartCount = useSyncExternalStore(
     subscribeToCart,
     getCartCount,
     () => 0
   );
+
+  useEffect(() => {
+  fetch("/api/products")
+    .then((res) => res.json())
+    .then((data) => {
+      setProducts(data);
+    })
+    .catch(console.error);
+}, []);
 
   function addToCart(product: Product) {
     const savedCart = localStorage.getItem("cart");
@@ -257,7 +131,7 @@ export default function ShopPage() {
     window.dispatchEvent(new Event("cart-updated"));
   }
 
-  const filtered = PRODUCTS
+  const filtered = products
     .filter((p) =>
       (selectedCategory === "All" || p.category === selectedCategory) &&
       p.price <= maxPrice &&
@@ -426,13 +300,13 @@ export default function ShopPage() {
                       href="/sellers"
                       className="text-xs text-[#D85A30] hover:underline"
                     >
-                      by {product.seller}
+                      by {product.seller.name}
                     </Link>
 
                     <div className="mt-2">
                       <StarRating rating={product.rating} />
                       <span className="text-xs text-[#5F5E5A] opacity-50">
-                        ({product.reviews} reviews)
+                        ({product.reviewCount} reviews)
                       </span>
                     </div>
 
@@ -455,88 +329,98 @@ export default function ShopPage() {
         </div>
       </div>
 
-      {selectedProduct && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 p-4"
-            onClick={() => setSelectedProduct(null)}
-          >
-          <div   
-            className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-5 shadow-xl transform transition-all duration-300 scale-100 sm:p-6"
-  onClick={(e) => e.stopPropagation()}
+          {selectedProduct && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 p-4"
+              onClick={() => setSelectedProduct(null)}
             >
-
-            <div className="mb-4 flex items-start justify-between gap-4">
-              <p className="text-sm uppercase tracking-wider text-[#D85A30] font-semibold">
-                Product Details
-              </p>
-
-              <h2 className="text-xl font-bold text-[#5F5E5A] sm:text-2xl">
-                {selectedProduct.name}
-              </h2>
-
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="text-xl font-bold text-gray-500 hover:text-black"
+              <div
+                className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-5 shadow-xl"
+                onClick={(e) => e.stopPropagation()}
               >
-                x
-              </button>
-            </div>
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <h2 className="text-xl font-bold text-[#5F5E5A]">
+                    {selectedProduct.name}
+                  </h2>
+          
+                  <button
+                  aria-label="Close product details"
+                    onClick={() => setSelectedProduct(null)}
+                    className="text-xl font-bold text-gray-500 hover:text-black"
+                  >
+                    ×
+                  </button>
+                </div>
+          
+                <div className="my-8 flex justify-center">
+                  <div className="text-8xl">{selectedProduct.emoji}</div>
+                </div>
+          
+                <p className="text-gray-600 mb-4">
+                  {selectedProduct.description}
+                </p>
+          
+                <div className="space-y-3 text-[#5F5E5A]">
+                  <div>🪵 <strong>Materials:</strong> {selectedProduct.materials}</div>
+                  <div>📦 <strong>Stock:</strong> {selectedProduct.stock}</div>
+                  <div>🚚 <strong>Shipping:</strong> {selectedProduct.shippingTime}</div>
+                </div>
+          
+                <div className="mt-6 flex items-center justify-between">
+                  <span className="text-2xl font-bold text-[#D85A30]">
+                    ${selectedProduct.price.toFixed(2)}
+                  </span>
+          
+                  <button
+                    onClick={() => addToCart(selectedProduct)}
+                    className="rounded-full bg-[#D85A30] px-4 py-2 text-white"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+          
+                <div className="mt-8 border-t pt-6">
+                  <h3 className="mb-4 text-lg font-semibold text-[#D85A30]">
+                    Leave a Review
+                  </h3>
+          
+                  <select
+                    value={reviewRating}
+                    onChange={(e) => setReviewRating(Number(e.target.value))}
+                    className="mb-3 w-full rounded-lg border p-2"
+                  >
+                    <option value={5}>⭐⭐⭐⭐⭐</option>
+                    <option value={4}>⭐⭐⭐⭐</option>
+                    <option value={3}>⭐⭐⭐</option>
+                    <option value={2}>⭐⭐</option>
+                    <option value={1}>⭐</option>
+                  </select>
+          
+                  <textarea
+                    value={reviewComment}
+                    onChange={(e) => setReviewComment(e.target.value)}
+                    placeholder="Write your review..."
+                    className="w-full rounded-lg border p-3"
+                    rows={4}
+                  />
 
-            <div className="my-8 flex justify-center sm:m-10">
-              <div className="text-8xl">
-                {selectedProduct.emoji}
+                  <button
+                    className="mt-3 rounded-full bg-[#D85A30] px-5 py-2 text-white"
+                    onClick={() => {
+                      alert("Review submitted!");
+                      setReviewComment("");
+                      setReviewRating(5);
+                    }}
+                  >
+                    Submit Review
+                  </button>
+                </div>
               </div>
             </div>
-
-            <p className="text-gray-600 mb-4">
-              {selectedProduct.description}
-            </p>
-
-            <div className="space-y-3 text-[#5F5E5A]">
-              <div className="flex items-center gap-2">
-                <span>🪵</span>
-                <span>
-                  <strong className="text-[#D85A30]">Materials:</strong>{" "}
-                  {selectedProduct.materials}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span>📦</span>
-                <span>
-                  <strong className="text-[#D85A30]">Stock:</strong>{" "}
-                  {selectedProduct.stock}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span>🚚</span>
-                <span>
-                  <strong className="text-[#D85A30]">Shipping:</strong>{" "}
-                  {selectedProduct.shippingTime}
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <span className="text-2xl font-bold text-[#D85A30]">
-                ${selectedProduct.price.toFixed(2)}
-              </span>
-
-              <button 
-              onClick={() => addToCart(selectedProduct)} 
-              className="rounded-full bg-[#D85A30] px-4 py-2 text-center text-white hover:bg-[#BA7517]"
-              >
-                Add to Cart
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
-
-      {/* Footer */}
-      <footer className="mt-12 w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
+)}
+  
+        {/* Footer */}
+        <footer className="mt-12 w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
         <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
         <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
       </footer>
