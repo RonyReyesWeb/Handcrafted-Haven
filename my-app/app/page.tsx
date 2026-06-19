@@ -1,20 +1,28 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-[#F1EFE8] font-sans">
-      {/* Navigation */}
       <header className="w-full bg-white px-4 py-4 shadow-sm sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-2xl font-bold text-[#D85A30]">
+          <Link href="/" className="text-2xl font-bold text-[#D85A30]">
             Handcrafted Haven
-          </h1>
-          <nav className="flex flex-wrap gap-4 text-sm font-medium text-[#5F5E5A] sm:gap-6 sm:text-base">
-            <a href="#" className="hover:text-[#D85A30] transition-colors">Home</a>
-            <a href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</a>
-            <a href="#" className="hover:text-[#D85A30] transition-colors">Sellers</a>
-            <a href="#" className="hover:text-[#D85A30] transition-colors">About</a>
+          </Link>
+          <nav className="flex flex-wrap gap-4 text-sm font-medium text-[#5F5E5A] sm:gap-6">
+            <Link href="/" className="text-[#D85A30]  font-semibold transition-colors">Home</Link>
+            <Link href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</Link>
+            <Link href="/sellers" className="hover:text-[#D85A30] transition-colors">Sellers</Link>
+            <Link href="/sell/new" className="hover:text-[#D85A30] transition-colors">Sell</Link>
+            <Link
+              href="/cart"
+              className="relative hover:text-[#D85A30] transition-colors"
+            >
+              Cart
+            </Link>
           </nav>
         </div>
       </header>
+
 
       <main className="flex w-full flex-col items-center">
         {/* Hero Section */}

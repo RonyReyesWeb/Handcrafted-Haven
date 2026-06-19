@@ -117,9 +117,6 @@ export default function NewListingPage() {
             <Link href="/" className="hover:text-[#D85A30] transition-colors">Home</Link>
             <Link href="/shop" className="hover:text-[#D85A30] transition-colors">Shop</Link>
             <Link href="/sellers" className="hover:text-[#D85A30] transition-colors">Sellers</Link>
-            <Link href="/dashboard/listings" className="hover:text-[#D85A30] transition-colors font-semibold text-[#D85A30]">
-              My Listings
-            </Link>
           </nav>
         </div>
       </header>
