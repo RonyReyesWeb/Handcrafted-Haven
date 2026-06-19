@@ -37,3 +37,5 @@ The application focuses on:
 ---
 
 _WDD 430: Web Full-Stack Development — BYU-Idaho_
+
+Link to the video in youtube: https://www.youtube.com/watch?v=LiYp6QDwFL4
