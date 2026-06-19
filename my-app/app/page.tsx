@@ -92,7 +92,7 @@ export default function Home() {
               {[
                 { icon: "🤝", title: "Support Artisans", desc: "Every purchase directly supports independent makers and their craft." },
                 { icon: "🌱", title: "Sustainable", desc: "Handmade products promote conscious, sustainable consumption." },
-                { icon: "✨", title: "Unique Finds", desc: "Discover one-of-a-kind items you won't find anywhere else." },
+                { icon: "💎", title: "Unique Finds", desc: "Discover one-of-a-kind items you won't find anywhere else." },
               ].map((item) => (
                 <div key={item.title} className="flex flex-col items-center gap-3">
                   <span className="text-4xl">{item.icon}</span>
@@ -107,8 +107,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-auto w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
-        <p>Ã‚Â© 2025 Handcrafted Haven Ã‚Â· WDD 430 Web Full-Stack Development Ã‚Â· BYU-Idaho</p>
-        <p className="mt-1 text-white/60">Javiera Lorca Jimenez Ã‚Â· Rony Reyes</p>
+        <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
+        <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
       </footer>
     </div>
   );

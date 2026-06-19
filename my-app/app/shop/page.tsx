@@ -130,7 +130,7 @@ const PRODUCTS = [
 
   {
     id: 8,
-    name: "MacramÃ© Wall Art",
+    name: "Macramé Wall Art",
     price: 78,
     category: "Home Decor",
     seller: "Lucia V.",
@@ -397,7 +397,7 @@ export default function ShopPage() {
           {/* Cards */}
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24 text-center">
-              <span className="text-5xl mb-4">ðŸ”Ž</span>
+              <span className="text-5xl mb-4">🔎</span>
               <p className="text-[#5F5E5A] font-semibold text-lg">No products found</p>
               <p className="text-[#5F5E5A] text-sm opacity-60 mt-1">
                 Try adjusting your filters or search term.
@@ -422,9 +422,12 @@ export default function ShopPage() {
                     <h4 className="text-base font-semibold text-[#5F5E5A] mt-0.5 group-hover:text-[#D85A30] transition-colors">
                       {product.name}
                     </h4>
-                    <p className="text-xs text-[#5F5E5A] opacity-60 mt-0.5">
+                    <Link
+                      href="/sellers"
+                      className="text-xs text-[#D85A30] hover:underline"
+                    >
                       by {product.seller}
-                    </p>
+                    </Link>
 
                     <div className="mt-2">
                       <StarRating rating={product.rating} />
@@ -534,8 +537,8 @@ export default function ShopPage() {
 
       {/* Footer */}
       <footer className="mt-12 w-full bg-[#5F5E5A] px-4 py-6 text-center text-sm text-white">
-        <p>Â© 2025 Handcrafted Haven Â· WDD 430 Web Full-Stack Development Â· BYU-Idaho</p>
-        <p className="mt-1 text-white/60">Javiera Lorca Jimenez Â· Rony Reyes</p>
+        <p>© 2025 Handcrafted Haven · WDD 430 Web Full-Stack Development · BYU-Idaho</p>
+        <p className="mt-1 text-white/60">Javiera Lorca Jimenez · Rony Reyes</p>
       </footer>
 
     </div>
